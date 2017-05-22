@@ -1,35 +1,10 @@
 <div>
-   <h1>Book</h1>
-
-   <br/><br/>
-
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Author</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-    {{#each model as |book|}}
-      <tr>
-        <th>{{book.id}}</th>
-        <td>{{book.author}}</td>
-        <td>{{book.name}}</td>
-        <td>{{book.description}}</td>
-        <td>
-          <span>
-            <button class="btn btn-primary btn-lg btn-block" {{action 'editBook' book}} >Edit</button>
-            <button class="btn btn-primary btn-lg btn-block" {{action 'deleteBook' book}} >Delete</button>
-          </span>
-        </td>
-      </tr>
-    {{/each}}
-    </tbody>
-  </table>
+  {{admin-table
+    model=model
+    tableDescription=tableDescription
+    editItem=(action 'editBook')
+    deleteItem=(action 'deleteBook')
+  }}
 
   <h2>New book</h2>
    <div class="form-horizontal form-group form-group-lg row">

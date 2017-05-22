@@ -1,6 +1,56 @@
 import Ember from 'ember';
+import cleanForm from '../utils/cleanForm'
 
 export default Ember.Controller.extend({
+  tableDescription: {
+    header: 'BOOKS',
+    columns: [
+      {
+        name: 'ID',
+        index: 'id'
+      },
+      {
+        name: 'Author',
+        index: 'author'
+      },
+      {
+        name: 'Name',
+        index: 'name'
+      },
+      {
+        name: 'Description',
+        index: 'description'
+      },
+    ]
+  },
+
+  //on future
+  formDescription: {
+    header: 'New BOOK',
+    elementId: '',
+    buttonLabel: 'Save book',
+    elements: [
+      {
+        name: 'Author',
+        type: 'text',
+        value: '',
+        placeholder: 'Please type book author'
+      },
+      {
+        name: 'Name',
+        type: 'text',
+        value: '',
+        placeholder: 'Please type book name'
+      },
+      {
+        name: 'Description',
+        type: 'text',
+        value: '',
+        placeholder: 'Please type book description'
+      },
+    ]
+  },
+
   bookId: '',
   inputAuthor: '',
   inputName: '',
@@ -8,12 +58,12 @@ export default Ember.Controller.extend({
 
   actions: {
     saveBook() {
-      function cleanFields(context) {
-        context.set('bookId', '');
-        context.set('inputAuthor', '');
-        context.set('inputName', '');
-        context.set('inputDescription', '');
-      }
+      const fields = [
+        'bookId',
+        'inputAuthor',
+        'inputName',
+        'inputDescription'
+      ];
 
       const id = this.get('bookId');
       const author = this.get('inputAuthor');
@@ -22,14 +72,14 @@ export default Ember.Controller.extend({
 
       if (id === '') {
         const newBook = this.store.createRecord('book', {
-          author: author,
-          name: name,
-          description: description
+          author,
+          name,
+          description
         });
 
         newBook.save().then((response) => {
           this.set('responseMessage', `Book saved. Id: ${response.get('id')}`);
-          cleanFields(this);
+          cleanForm.bind(this)(fields);
         });
       } else {
         this.store.findRecord('book', id).then(function(record) {
@@ -43,7 +93,7 @@ export default Ember.Controller.extend({
           });
         });
         this.set('responseMessage', `Book updated. Id: ${id}`);
-        cleanFields(this);
+        cleanForm.bind(this)(fields);
       }
     },
 

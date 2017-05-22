@@ -2,40 +2,17 @@
   {{admin-table
     model=model
     tableDescription=tableDescription
-    editItem=editComment
-    deleteItem=deleteComment
+    editItem=(action 'editComment')
+    deleteItem=(action 'deleteComment')
   }}
 
-   <h1>{{tableDescription.header}}</h1>
+  {{input-form
+    formDescription=formDescription
+    saveItem=(action 'saveComment')
+    cancel=(action 'cancel')
+  }}
 
-   <br/><br/>
-
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Text</th>
-        <th>Book</th>
-        <th>User</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-    {{#each model as |comment|}}
-      <tr>
-        <th>{{comment.id}}</th>
-        <td>{{comment.text}}</td>
-        <td>{{comment.book}}</td>
-        <td>{{comment.user}}</td>
-        <td>
-          <span>
-            <button class="btn btn-primary btn-lg btn-block" {{action 'editComment' comment}} >Edit</button>
-            <button class="btn btn-primary btn-lg btn-block" {{action 'deleteComment' comment}} >Delete</button>
-          </span>
-        </td>
-      </tr>
-    {{/each}}
-    </tbody>
-  </table>
-
+  {{#if responseMessage}}
+    <div class="alert alert-success">{{responseMessage}}</div>
+  {{/if}}
 </div>

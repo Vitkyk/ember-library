@@ -1,0 +1,18 @@
+<div>
+  <h2>{{formDescription.header}}</h2>
+
+ <div class="form-horizontal form-group form-group-lg row">
+   {{#each formDescription.elements as |element|}}
+    <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
+      {{input type=element.type value=element.value class="form-control" placeholder=element.placeholder }}
+    </div>
+   {{/each}}
+
+    <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
+      <button class="btn btn-primary btn-lg btn-block" {{action saveItem}} >{{formDescription.saveButtonLabel}}</button>
+    </div>
+    <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-4 col-md-3">
+      <button class="btn btn-primary btn-lg btn-block" {{action cancel}} >{{formDescription.cancelButtonLabel}}</button>
+    </div>
+ </div>
+</div>
