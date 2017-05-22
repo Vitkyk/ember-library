@@ -1,0 +1,10 @@
+<h3>Comment</h3>
+
+<div class="form-horizontal form-group form-group-lg row">
+ <div>
+   {{input type="text" value=inputText placeholder="Please type your comment." autofocus="autofocus"}}
+ </div>
+ <div>
+   <button {{action 'saveComment'}} disabled={{isDisabled}}>Save comment</button>
+ </div>
+</div>

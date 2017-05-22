@@ -1,0 +1,13 @@
+<h2>{{title}}</h2>
+
+<ul>
+  {{#each books as |book|}}
+    <li>
+      <h3>{{book.name}}</h3>
+      <ul>
+        <li>Autor: {{book.autor}}</li>
+        <li>Count: {{book.count}}</li>
+      </ul>
+    </li>
+  {{/each}}
+</ul>

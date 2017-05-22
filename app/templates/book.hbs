@@ -1,0 +1,56 @@
+<div>
+   <h1>Book</h1>
+
+   <br/><br/>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Author</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each model as |book|}}
+      <tr>
+        <th>{{book.id}}</th>
+        <td>{{book.author}}</td>
+        <td>{{book.name}}</td>
+        <td>{{book.description}}</td>
+        <td>
+          <span>
+            <button class="btn btn-primary btn-lg btn-block" {{action 'editBook' book}} >Edit</button>
+            <button class="btn btn-primary btn-lg btn-block" {{action 'deleteBook' book}} >Delete</button>
+          </span>
+        </td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+
+  <h2>New book</h2>
+   <div class="form-horizontal form-group form-group-lg row">
+     <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
+       {{input type="text" value=inputAuthor class="form-control" placeholder="Please type author" }}
+     </div>
+      <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
+        {{input type="text" value=inputName class="form-control" placeholder="Please type book name" }}
+      </div>
+      <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
+       {{input type="text" value=inputDescription class="form-control" placeholder="Please type your description"}}
+      </div>
+     <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-4 col-md-3">
+       <button class="btn btn-primary btn-lg btn-block" {{action 'saveBook'}} >Save book</button>
+     </div>
+   </div>
+
+   {{#if responseMessage}}
+     <div class="alert alert-success">{{responseMessage}}</div>
+   {{/if}}
+
+   <br/><br/>
+
+</div>
