@@ -1,0 +1,31 @@
+<div>
+  <h1>{{tableDescription.header}}</h1>
+
+  <br/><br/>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        {{#each tableDescription.columns as |column|}}
+          <th>{{column.name}}</th>
+        {{/each}}
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each model as |item|}}
+      <tr>
+        {{#each tableDescription.columns as |column|}}
+          <td>{{get item column.index}}</td>
+        {{/each}}
+        <td>
+          <span>
+            <button class="btn btn-primary" {{action editItem item}} >Edit</button>
+            <button class="btn btn-primary" {{action deleteItem item}} >Delete</button>
+          </span>
+        </td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</div>
