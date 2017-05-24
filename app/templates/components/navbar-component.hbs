@@ -1,30 +1,24 @@
-<nav class="navbar navbar-light bg-faded mb-3">
-  {{#link-to 'index' class="button"}}
-    <button>Home</button>
-  {{/link-to}}
-  {{#link-to 'catalog' class="button"}}
-    <button>Catalog</button>
-  {{/link-to}}
-  {{#link-to 'book' class="button"}}
-    <button>Book</button>
-  {{/link-to}}
-  {{#link-to 'profile' class="button"}}
-    <button>Profile</button>
-  {{/link-to}}
-  {{#link-to 'user' class="button"}}
-    <button>User</button>
-  {{/link-to}}
-  {{#link-to 'comment' class="button"}}
-    <button>Comment</button>
-  {{/link-to}}
-  {{#link-to 'about' class="button"}}
-    <button>About</button>
-  {{/link-to}}
-  {{#if session.isAuthenticated}}
-    <button {{action 'invalidateSession'}}>Logout</button>
-  {{else}}
-    {{#link-to 'login'}}
-      <button>Login</button>
-    {{/link-to}}
-  {{/if}}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav list-inline">
+      {{#each elements as |element|}}
+      <li>
+        {{#link-to element.link class="button"}}
+          <button class="btn btn-default">{{element.title}}</button>
+        {{/link-to}}
+      </li>
+      {{/each}}
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        {{#if session.isAuthenticated}}
+          <button {{action 'invalidateSession'}} class="btn btn-default">Logout</button>
+        {{else}}
+          {{#link-to 'login'}}
+            <button class="btn btn-default">Login</button>
+          {{/link-to}}
+        {{/if}}
+      </li>
+    </ul>
+  </div>
 </nav>

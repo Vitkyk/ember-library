@@ -14,6 +14,10 @@ export default Ember.Controller.extend({
         index: 'text'
       },
       {
+        name: 'DATE',
+        index: 'date'
+      },
+      {
         name: 'BOOK',
         index: 'book'
       },
@@ -38,18 +42,27 @@ export default Ember.Controller.extend({
         placeholder: 'Please type comment text'
       },
       {
+        name: 'Date',
+        type: 'text',
+        index: 'date',
+        value: '',
+        placeholder: 'Please type comment date'
+      },
+      {
         name: 'Book',
         type: 'text',
         index: 'book',
         value: '',
-        placeholder: 'Please type book'
+        placeholder: 'Please type book',
+        foreignKey: true
       },
       {
         name: 'User',
         type: 'text',
         index: 'user',
         value: '',
-        placeholder: 'Please type user'
+        placeholder: 'Please type user',
+        foreignKey: true
       },
     ]
   },
@@ -62,7 +75,8 @@ export default Ember.Controller.extend({
       const data = {};
 
       for (let i = 0; i < form.elements.length; i++) {
-        data[form.elements[i].index] = form.elements[i].value;
+        data[form.elements[i].index] = form.elements[i].foreignKey ?
+          this.store.peekRecord(form.elements[i].index, form.elements[i].value) : form.elements[i].value;
       }
 
       if (form.elementId === '') {
@@ -106,6 +120,9 @@ export default Ember.Controller.extend({
       }
 
       data.id = comment.get('id');
+
+      console.log(data);
+      debugger;
 
       fillForm.bind(this)('formDescription', data);
     },
