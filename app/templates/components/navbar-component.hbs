@@ -4,7 +4,7 @@
       {{#each elements as |element|}}
       <li>
         {{#link-to element.link class="button"}}
-          <button class="btn btn-default">{{element.title}}</button>
+          {{element.title}}
         {{/link-to}}
       </li>
       {{/each}}
@@ -12,10 +12,10 @@
     <ul class="nav navbar-nav navbar-right">
       <li>
         {{#if session.isAuthenticated}}
-          <button {{action 'invalidateSession'}} class="btn btn-default">Logout</button>
+          <button {{action 'invalidateSession'}} class="btn-link">Logout</button>
         {{else}}
           {{#link-to 'login'}}
-            <button class="btn btn-default">Login</button>
+            <button {{action 'invalidateSession'}} class="btn-link">Login</button>
           {{/link-to}}
         {{/if}}
       </li>

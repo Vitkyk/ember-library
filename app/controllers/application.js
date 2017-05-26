@@ -24,6 +24,10 @@ export default Ember.Controller.extend({
       link: 'comment'
     },
     {
+      title: 'Profile',
+      link: 'profile'
+    },
+    {
       title: 'About',
       link: 'about'
     },

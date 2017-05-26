@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import cleanForm from '../utils/cleanForm'
+import { saveItem, fillFormToEdit, deleteItem, cancelEditions } from '../utils/basic-actions';
 
 export default Ember.Controller.extend({
   tableDescription: {
@@ -24,97 +24,51 @@ export default Ember.Controller.extend({
     ]
   },
 
-  //on future
   formDescription: {
     header: 'New BOOK',
     elementId: '',
-    buttonLabel: 'Save book',
+    saveButtonLabel: 'Save Comment',
+    cancelButtonLabel: 'Cancel',
     elements: [
       {
         name: 'Author',
         type: 'text',
+        index: 'author',
         value: '',
         placeholder: 'Please type book author'
       },
       {
         name: 'Name',
         type: 'text',
+        index: 'name',
         value: '',
         placeholder: 'Please type book name'
       },
       {
         name: 'Description',
         type: 'text',
+        index: 'description',
         value: '',
         placeholder: 'Please type book description'
       },
     ]
   },
 
-  bookId: '',
-  inputAuthor: '',
-  inputName: '',
-  inputDescription: '',
-
   actions: {
     saveBook() {
-      const fields = [
-        'bookId',
-        'inputAuthor',
-        'inputName',
-        'inputDescription'
-      ];
-
-      const id = this.get('bookId');
-      const author = this.get('inputAuthor');
-      const name = this.get('inputName');
-      const description = this.get('inputDescription');
-
-      if (id === '') {
-        const newBook = this.store.createRecord('book', {
-          author,
-          name,
-          description
-        });
-
-        newBook.save().then((response) => {
-          this.set('responseMessage', `Book saved. Id: ${response.get('id')}`);
-          cleanForm.bind(this)(fields);
-        });
-      } else {
-        this.store.findRecord('book', id).then(function(record) {
-          record.set('author', author);
-          record.set('name', name);
-          record.set('description', description);
-
-          record.save().then(() => {
-            //this.set('responseMessage', `Book updated. Id: ${id}`);
-            //cleanFields(this);
-          });
-        });
-        this.set('responseMessage', `Book updated. Id: ${id}`);
-        cleanForm.bind(this)(fields);
-      }
+      saveItem.bind(this)('book');
     },
 
     editBook(book) {
-      const id = book.get('id');
-      const author = book.get('author');
-      const name = book.get('name');
-      const description = book.get('description');
-
-      this.set('bookId', id);
-      this.set('inputAuthor', author);
-      this.set('inputName', name);
-      this.set('inputDescription', description);
+      fillFormToEdit.bind(this)(book);
     },
 
     deleteBook(book) {
-      let confirmation = confirm('Are you sure?');
+      deleteItem.bind(this)(book, 'Book was deleted');
+    },
 
-      if (confirmation) {
-        book.destroyRecord();
-      }
+    cancel() {
+      cancelEditions.bind(this)();
     }
   }
 });

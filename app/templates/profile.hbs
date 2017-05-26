@@ -1,7 +1,7 @@
-<h2>Profile</h2>
-
-<h3>{{model.name}}</h3>
-<ul>
-  <li>Email: {{model.email}}</li>
-  <li>Age: {{model.age}}</li>
-</ul>
+<div>
+    {{advanced-input-form
+        formDescription=formDescription
+        saveItem=(action 'saveProfile')
+        cancel=(action 'cancel')
+    }}
+</div>

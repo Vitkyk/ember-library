@@ -1,6 +1,6 @@
 <div>
   {{admin-table
-    model=model.comments
+    model=model
     tableDescription=tableDescription
     editItem=(action 'editComment')
     deleteItem=(action 'deleteComment')
@@ -11,6 +11,20 @@
     saveItem=(action 'saveComment')
     cancel=(action 'cancel')
   }}
+
+  <ul>
+    {{#each model as |comment|}}
+      <li>{{comment.id}}</li>
+      <li>{{comment.book}}</li>
+      <li>{{comment.book.isPending}}</li>
+      <li>{{comment.book.id}}</li>
+        <li>
+            {{#each (await comment.book) as |book|}}
+                {{book.id}}
+            {{/each}}
+        </li>
+    {{/each}}
+  </ul>
 
   {{#if responseMessage}}
     <div class="alert alert-success">{{responseMessage}}</div>

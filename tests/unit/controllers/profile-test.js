@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('controller:comment-component', 'Unit | Controller | comment component', {
+moduleFor('controller:profile', 'Unit | Controller | profile', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });

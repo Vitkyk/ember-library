@@ -5,5 +5,6 @@ export default DS.Model.extend({
   name: DS.attr('string'),
   description: DS.attr('string'),
 
+  //author: DS.belongsTo('author'),
   comments: DS.hasMany('comment'),
 });

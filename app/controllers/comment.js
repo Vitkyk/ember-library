@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import fillForm from '../utils/fillForm';
+import { saveItem, fillFormToEdit, deleteItem, cancelEditions } from '../utils/basic-actions';
 
 export default Ember.Controller.extend({
   tableDescription: {
@@ -69,90 +69,19 @@ export default Ember.Controller.extend({
 
   actions: {
     saveComment() {
-      const self = this;
-      const form = this.get('formDescription');
-
-      const data = {};
-
-      for (let i = 0; i < form.elements.length; i++) {
-        data[form.elements[i].index] = form.elements[i].foreignKey ?
-          this.store.peekRecord(form.elements[i].index, form.elements[i].value) : form.elements[i].value;
-      }
-
-      if (form.elementId === '') {
-        const newComment = this.store.createRecord('comment', data);
-
-        newComment.save().then((response) => {
-          this.set('responseMessage', `Comment was saved. Id: ${response.get('id')}`);
-
-          for (let i = 0; i < form.elements.length; i++) {
-            data[form.elements[i].index] = '';
-          }
-
-          fillForm.bind(this)('formDescription', data);
-        });
-      } else {
-        this.store.findRecord('comment', form.elementId).then(function(record) {
-          record.setProperties(data);
-
-          record.save().then(function() {
-            self.set('responseMessage', `Comment was updated. Id: ${form.elementId}`);
-
-            for (let i = 0; i < form.elements.length; i++) {
-              data[form.elements[i].index] = '';
-            }
-
-            data.id = '';
-
-            fillForm.bind(self)('formDescription', data);
-          });
-        });
-      }
+      saveItem.bind(this)('comment');
     },
 
     editComment(comment) {
-      const form = this.get('formDescription');
-
-      const data = {};
-
-      for (let i = 0; i < form.elements.length; i++) {
-        data[form.elements[i].index] = comment.get(form.elements[i].index);//form.elements[i].value;
-      }
-
-      data.id = comment.get('id');
-
-      console.log(data);
-      debugger;
-
-      fillForm.bind(this)('formDescription', data);
+      fillFormToEdit.bind(this)(comment);
     },
 
     deleteComment(comment) {
-      let confirmation = confirm('Are you sure?');
-
-      if (confirmation) {
-        comment.destroyRecord().then(() => {
-          this.set('responseMessage', 'Comment was deleted.');
-        });
-      }
+      deleteItem.bind(this)(comment, 'Comment was deleted');
     },
 
     cancel() {
-      let confirmation = confirm('Are you sure?');
-
-      if (confirmation) {
-        const form = this.get('formDescription');
-
-        const data = {};
-
-        for (let i = 0; i < form.elements.length; i++) {
-          data[form.elements[i].index] = '';
-        }
-
-        data.id = '';
-
-        fillForm.bind(this)('formDescription', data);
-      }
+      cancelEditions.bind(this)();
     }
   }
 });
