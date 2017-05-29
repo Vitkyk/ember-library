@@ -3,9 +3,7 @@
 
     <div class="form-horizontal form-group form-group-lg row">
         {{#each formDescription.elements as |element|}}
-            <div class={{element.class}}>
-                {{input type=element.type value=element.value class="form-control" placeholder=element.placeholder }}
-            </div>
+            {{element.componentType content=element}}
         {{/each}}
 
         <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">

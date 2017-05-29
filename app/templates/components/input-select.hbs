@@ -1,0 +1,12 @@
+<div class={{content.nameClass}}>
+    <div class="form-control">
+        {{content.name}}
+    </div>
+</div>
+<div class={{content.class}}>
+    <select class="form-control">
+    {{#each content.options as |option|}}
+        <option value={{option.value}}>{{option.title}}</option>
+    {{/each}}
+    </select>
+</div>

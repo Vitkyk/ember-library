@@ -1,0 +1,12 @@
+<div>
+    {{one-way-input value=changeset.name update=(action (mut changeset.name))}}
+
+    <button {{action submit changeset}}>Submit</button>
+    <button {{action rollback changeset}}>Cancel</button>
+</div>
+
+<ul>
+    {{#each changeset.errors as |error|}}
+        <li>{{error.key}}: {{error.validation}}</li>
+    {{/each}}
+</ul>

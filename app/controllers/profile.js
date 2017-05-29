@@ -6,55 +6,74 @@ export default Ember.Controller.extend({
     elementId: '',
     saveButtonLabel: 'Save Profile',
     cancelButtonLabel: 'Cancel',
+    //remove useless
     elements: [
       {
+        componentType: 'input-label',
         name: 'NickName',
         type: 'text',
         index: 'nickname',
         value: '',
-        class: 'col-sm-12',
+        nameClass: 'col-sm-2 col-sm-offset-1 col-form-label',
+        class: 'col-sm-8',
         placeholder: 'Please type nickname',
-        validator(value) {
-          return true;
+        validate() {
+          console.log(1);
         }
       },
       {
+        componentType: 'input-label',
         name: 'Name',
         type: 'text',
         index: 'name',
         value: '',
-        class: 'col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2',
+        nameClass: 'col-sm-2 col-sm-offset-1',
+        class: 'col-sm-8',
         placeholder: 'Please type name'
       },
       {
+        componentType: 'input-text',
         name: 'Location',
         type: 'text',
         index: 'location',
         value: '',
-        class: 'col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2',
-        placeholder: 'Please type location'
+        nameClass: 'col-sm-2 col-sm-offset-1',
+        class: 'col-sm-8',
+        placeholder: 'Please type location',
+        rows: 5
       },
       {
+        componentType: 'input-label',
         name: 'Age',
         type: 'number',
         index: 'age',
         value: '',
-        class: 'col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2',
+        nameClass: 'col-sm-2 col-sm-offset-1',
+        class: 'col-sm-8',
         placeholder: 'Please type age'
       },
       {
+        componentType: 'input-select',
         name: 'Sex',
         type: 'select',
         index: 'sex',
         value: '',
+        nameClass: 'col-sm-2 col-sm-offset-1',
+        class: 'col-sm-8',
         placeholder: 'Please select',
-        options: ['male', 'female']
+        options: [
+          {title: 'male', value: 'male'},
+          {title: 'female', value: 'female'}
+        ]
       },
       {
+        componentType: 'input-label',
         name: 'CheckBox',
         type: 'checkbox',
         index: 'checkbox',
-        value: ''
+        value: '',
+        nameClass: 'col-sm-2 col-sm-offset-1',
+        class: 'col-sm-8',
       },
     ]
   },

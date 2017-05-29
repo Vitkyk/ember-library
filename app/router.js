@@ -25,6 +25,7 @@ Router.map(function() {
   this.route('author', { path: '/author/:author_id' });
   this.route('authors');
   this.route('page-not-found', { path: '/*path' });
+  this.route('test');
 });
 
 export default Router;
