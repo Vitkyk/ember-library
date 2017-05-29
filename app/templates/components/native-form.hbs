@@ -1,0 +1,22 @@
+<div>
+    <h2>{{changeset.header}}</h2>
+
+    <div class="form-horizontal">
+        {{#each changeset.descriptions as |description|}}
+            {{validated-input
+                value=(get changeset description.index)
+                description=description
+                errorMessage=(get changeset.error description.index)
+            }}
+        {{/each}}
+
+        <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-3">
+                <button class="btn btn-primary btn-lg btn-block" {{action submit changeset}} >{{changeset.saveButtonLabel}}</button>
+            </div>
+            <div class="col-sm-2">
+                <button class="btn btn-primary btn-lg btn-block" {{action rollback changeset}} >{{changeset.cancelButtonLabel}}</button>
+            </div>
+        </div>
+    </div>
+</div>

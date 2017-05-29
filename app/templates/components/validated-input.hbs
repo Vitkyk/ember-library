@@ -1,0 +1,20 @@
+<div class="form-group {{if errorMessage 'has-error'}}">
+    <label class="control-label col-sm-2">
+        {{description.index}}
+    </label>
+    <div class="col-sm-10">
+        {{component
+            (concat "one-way-" description.componentType)
+            value
+            type=description.type
+            options=description.options
+            update=(action (mut value))
+            class="form-control"
+        }}
+        <span>
+            {{#if errorMessage}}
+                <p>{{errorMessage.validation}}</p>
+            {{/if}}
+        </span>
+    </div>
+</div>
