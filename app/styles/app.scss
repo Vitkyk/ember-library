@@ -5,3 +5,26 @@
 body {
   padding-top: 20px;
 }
+
+.search-form {
+  width: 100%;
+}
+
+#search-input {
+}
+
+#search-help {
+  color: orange;
+  text-align: left;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+#search-help div{
+  color: #008000;
+  padding: 5px;
+}
+
+#search {
+  color: red;
+}

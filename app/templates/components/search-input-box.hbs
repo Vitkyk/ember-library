@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="search-input" class="input-group">
+                <input
+                    type="text"
+                    class="form-control"
+                    value={{searchValue}}
+                    placeholder="Search for snippets"
+                    onchange={{action 'onChangeSearchValue'}}
+                />
+                <div class="input-group-btn">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                    </div>
+                </div>
+            </div>
+            <div id="search-help">
+                {{#each items as |item|}}
+                    <div onclick={{action 'select' item.key}}>{{item.key}}</div>
+                {{/each}}
+                {{#each isContained as |item|}}
+                    <div onclick={{action 'select' item.key}}>{{item.key}}</div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
