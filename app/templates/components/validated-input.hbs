@@ -1,6 +1,6 @@
 <div class="form-group {{if errorMessage 'has-error'}}">
     <label class="control-label col-sm-2">
-        {{description.index}}
+        {{description.title}}
     </label>
     <div class="col-sm-10">
         {{component
@@ -8,6 +8,7 @@
             value
             type=description.type
             options=description.options
+            placeholder=description.placeholder
             update=(action (mut value))
             class="form-control"
         }}

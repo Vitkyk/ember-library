@@ -1,22 +1,12 @@
 import DS from 'ember-data';
-import EmberValidations from 'ember-validations';
 
-export default DS.Model.extend(EmberValidations, {
-  username: DS.attr('string'),
-  email: DS.attr('string'),
-  password: DS.attr('string'),
-
-  validations: {
-    'username': {
-      presence: true,
-      length: { minimum: 6 }
-    },
-    'email': {
-      presence: true
-    },
-    'password': {
-      presence: true,
-      length: { minimum: 8 }
-    }
-  }
+export default DS.Model.extend({
+  nickname: DS.attr('string'),
+  firstName: DS.attr('string'),
+  lastName: DS.attr('string'),
+  sex: DS.attr('string'),
+  age: DS.attr('number'),
+  language: DS.attr('string'),
+  about: DS.attr('string'),
+  agreement: DS.attr('boolean'),
 });

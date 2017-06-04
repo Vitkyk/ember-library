@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="search-input" class="input-group">
+                {{one-way-input
+                    searchValue
+                    placeholder=searchPlaceholder
+                    update=(action (mut searchValue))
+                    class="form-control"
+                }}
+                <div class="input-group-btn">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-primary" {{action 'search'}}><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                    </div>
+                </div>
+            </div>
+            {{#if isVisibleSearchListBox}}
+                <div id="search-help">
+                    {{#each searchListBox as |item|}}
+                        <div onclick={{action 'select' item.key}}>{{item.key}}</div>
+                    {{/each}}
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

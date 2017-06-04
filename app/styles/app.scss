@@ -2,6 +2,30 @@
 
 @import "ember-bootstrap/bootstrap";
 
+@import "ember-modal-dialog/ember-modal-structure";
+@import "ember-modal-dialog/ember-modal-appearance";
+
 body {
   padding-top: 20px;
+}
+
+#search-help {
+  color: orange;
+  text-align: left;
+  background-color: #ffffff;
+
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000000;
+  border-radius: 5px;
+}
+
+#search-help div{
+  color: #008000;
+  padding: 5px;
+}
+
+#search-help div:hover{
+  background-color: #eeeeee;
+  border-radius: 5px;
 }
