@@ -1,0 +1,19 @@
+<div>
+    {{admin-table
+        model=model
+        tableDescription=tableDescription
+        editItem=(action 'editComment')
+        deleteItem=(action 'deleteComment')
+    }}
+
+    {{native-form
+        changeset=(changeset formDescription TestValidations)
+        submit=(action "submit")
+        rollback=(action "rollback")
+    }}
+
+
+    {{#if responseMessage}}
+        <div class="alert alert-success">{{responseMessage}}</div>
+    {{/if}}
+</div>

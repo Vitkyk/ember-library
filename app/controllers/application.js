@@ -44,6 +44,10 @@ export default Ember.Controller.extend({
           link: 'admin.books'
         },
         {
+          title: 'Comments',
+          link: 'admin.comments'
+        },
+        {
           title: 'Settings',
           link: 'admin.settings'
         }

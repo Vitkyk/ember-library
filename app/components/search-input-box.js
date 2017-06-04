@@ -29,7 +29,7 @@ export default Ember.Component.extend({
     return items;
   }),
 
-  isVisibleSearchListBox: Ember.computed('searchListBox', 'isSelect','isFocus', function() {
+  isVisibleSearchListBox: Ember.computed('searchListBox', 'isFocus', function() {
     return (this.get('isFocus')) && (this.get('searchListBox').length !== 0);
   }),
 

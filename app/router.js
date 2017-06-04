@@ -17,6 +17,7 @@ Router.map(function() {
     this.route('invitation');
     this.route('books');
     this.route('settings');
+    this.route('comments');
   });
   this.route('book');
   this.route('comment');

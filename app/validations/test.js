@@ -18,4 +18,7 @@ export default {
     validateNumber({ lt: 200 }),
     validateNumber({ gt: 0 }),
   ],
+  text: [
+    validatePresence(true)
+  ],
 };
