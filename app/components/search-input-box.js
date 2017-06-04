@@ -37,7 +37,7 @@ export default Ember.Component.extend({
       this.set('searchValue', value);
     },
     search() {
-      var value = this.get('searchValue');
+      // var value = this.get('searchValue');
       this.set('searchValue', '');
     },
   }

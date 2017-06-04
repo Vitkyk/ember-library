@@ -74,7 +74,7 @@ export function deleteItem(item, message) {
 
   if (confirmation) {
     item.destroyRecord().then(() => {
-      this.set('responseMessage', 'Comment was deleted');
+      this.set('responseMessage', message);
     });
   }
 }

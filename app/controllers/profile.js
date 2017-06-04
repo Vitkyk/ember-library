@@ -17,9 +17,6 @@ export default Ember.Controller.extend({
         nameClass: 'col-sm-2 col-sm-offset-1 col-form-label',
         class: 'col-sm-8',
         placeholder: 'Please type nickname',
-        validate() {
-          console.log(1);
-        }
       },
       {
         componentType: 'input-label',
@@ -82,15 +79,6 @@ export default Ember.Controller.extend({
     saveProfile() {
       //saveItem.bind(this)('Profile');
     },
-
-    editProfile(Profile) {
-      //fillFormToEdit.bind(this)(Profile);
-    },
-
-    deleteProfile(Profile) {
-      //deleteItem.bind(this)(Profile, 'Profile was deleted');
-    },
-
     cancel() {
       //cancelEditions.bind(this)();
     }

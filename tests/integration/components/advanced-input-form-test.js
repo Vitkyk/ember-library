@@ -13,13 +13,4 @@ test('it renders', function(assert) {
   this.render(hbs`{{advanced-input-form}}`);
 
   assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#advanced-input-form}}
-      template block text
-    {{/advanced-input-form}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
 });
