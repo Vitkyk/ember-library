@@ -28,4 +28,15 @@
     {{/each}}
     </tbody>
   </table>
+    <div> Pages: {{numberOfPages}}</div>
+    <div>
+        Items on page:
+        {{#each itemsOnPageOptions as |count|}}
+            {{#if count.disabled}}
+                <strong>{{count.value}}</strong>
+            {{else}}
+                <button {{action 'selectNumberOfItemsOnPage' count.value}}>{{count.value}}</button>
+            {{/if}}
+        {{/each}}
+    </div>
 </div>
