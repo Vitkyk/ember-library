@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  isFocus: false,
   searchValue: '',
   searchPlaceholder: 'Search...',
 
@@ -28,8 +29,8 @@ export default Ember.Component.extend({
     return items;
   }),
 
-  isVisibleSearchListBox: Ember.computed('searchListBox', function() {
-    return this.get('searchListBox').length !== 0;
+  isVisibleSearchListBox: Ember.computed('searchListBox', 'isSelect','isFocus', function() {
+    return (this.get('isFocus')) && (this.get('searchListBox').length !== 0);
   }),
 
   actions: {
@@ -39,6 +40,11 @@ export default Ember.Component.extend({
     search() {
       // var value = this.get('searchValue');
       this.set('searchValue', '');
+    },
+    toggleIsFocus() {
+      setTimeout(() => {
+        this.toggleProperty('isFocus');
+      }, 500); //bad solution - will be rewritten to event
     },
   }
 });

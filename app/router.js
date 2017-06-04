@@ -16,6 +16,7 @@ Router.map(function() {
   this.route('admin', function() {
     this.route('invitation');
     this.route('books');
+    this.route('settings');
   });
   this.route('book');
   this.route('comment');

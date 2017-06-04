@@ -3,9 +3,29 @@
     <ul class="nav navbar-nav list-inline">
       {{#each elements as |element|}}
       <li>
-        {{#link-to element.link class="button"}}
-          {{element.title}}
-        {{/link-to}}
+          <a>
+            {{#if element.dropdown}}
+                    {{#bs-dropdown as |dd|}}
+                        {{#dd.toggle class="btn-link"}}
+                            Admin
+                            <span class="caret"></span>
+                        {{/dd.toggle}}
+                        {{#dd.menu as |ddm|}}
+                            {{#each element.dropdownElements as |option|}}
+                                {{#ddm.item}}
+                                    {{#link-to option.link class="button"}}
+                                        {{option.title}}
+                                    {{/link-to}}
+                                {{/ddm.item}}
+                            {{/each}}
+                        {{/dd.menu}}
+                    {{/bs-dropdown}}
+            {{else}}
+                {{#link-to element.link class="btn-link"}}
+                  {{element.title}}
+                {{/link-to}}
+            {{/if}}
+          </a>
       </li>
       {{/each}}
     </ul>
@@ -22,3 +42,4 @@
     </ul>
   </div>
 </nav>
+

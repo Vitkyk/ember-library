@@ -1,12 +1,15 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div id="search-input" class="input-group">
+            <div class="input-group">
                 {{one-way-input
                     searchValue
                     placeholder=searchPlaceholder
                     update=(action (mut searchValue))
                     class="form-control"
+                    id="search-input"
+                    onblur=(action 'toggleIsFocus')
+                    onfocus=(action 'toggleIsFocus')
                 }}
                 <div class="input-group-btn">
                     <div class="btn-group" role="group">
@@ -15,9 +18,11 @@
                 </div>
             </div>
             {{#if isVisibleSearchListBox}}
-                <div id="search-help">
+                <div class="search-help">
                     {{#each searchListBox as |item|}}
-                        <div onclick={{action 'select' item.key}}>{{item.key}}</div>
+                        <div onclick={{action 'select' item.key}}>
+                            {{item.key}}
+                        </div>
                     {{/each}}
                 </div>
             {{/if}}

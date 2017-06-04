@@ -31,6 +31,24 @@ export default Ember.Controller.extend({
       title: 'About',
       link: 'about'
     },
+    {
+      title: 'Admin',
+      dropdown: true,
+      dropdownElements: [
+        {
+          title: 'Admin panel',
+          link: 'admin'
+        },
+        {
+          title: 'Books',
+          link: 'admin.books'
+        },
+        {
+          title: 'Settings',
+          link: 'admin.settings'
+        }
+      ]
+    }
   ],
 
   actions: {

@@ -9,8 +9,10 @@ body {
   padding-top: 20px;
 }
 
-#search-help {
-  color: orange;
+.search-help {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
   text-align: left;
   background-color: #ffffff;
 
@@ -20,12 +22,11 @@ body {
   border-radius: 5px;
 }
 
-#search-help div{
-  color: #008000;
+.search-help div{
   padding: 5px;
 }
 
-#search-help div:hover{
+.search-help div:hover{
   background-color: #eeeeee;
   border-radius: 5px;
 }
