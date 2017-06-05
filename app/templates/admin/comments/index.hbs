@@ -1,0 +1,7 @@
+<div>
+    {{admin-table model=model tableDescription=tableDescription formDescription=formDescription}}
+
+    {{#if responseMessage}}
+        <div class="alert alert-success">{{responseMessage}}</div>
+    {{/if}}
+</div>

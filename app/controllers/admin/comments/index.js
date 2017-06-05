@@ -1,11 +1,10 @@
 import Ember from 'ember';
-import TestValidations from '../../validations/test';
-import { saveItem, cancelEditions } from '../../utils/basic-actions2';
-import { fillFormToEdit, deleteItem } from '../../utils/basic-actions';
+import TestValidations from '../../../validations/test';
 
 export default Ember.Controller.extend({
   tableDescription: {
     header: 'Comments',
+    routeToForm: 'admin.comments.form',
     columns: [
       {
         name: 'ID',

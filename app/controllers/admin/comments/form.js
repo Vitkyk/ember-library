@@ -1,38 +1,11 @@
 import Ember from 'ember';
-import TestValidations from '../../validations/test';
-import { saveItem, cancelEditions } from '../../utils/basic-actions2';
-import { fillFormToEdit, deleteItem } from '../../utils/basic-actions';
+import CommentValidations from '../../../validations/comment';
 
 export default Ember.Controller.extend({
-  tableDescription: {
-    header: 'Comments',
-    columns: [
-      {
-        name: 'ID',
-        index: 'id'
-      },
-      {
-        name: 'TEXT',
-        index: 'text'
-      },
-      {
-        name: 'DATE',
-        index: 'date'
-      },
-      {
-        name: 'BOOK',
-        index: 'book'
-      },
-      {
-        name: 'USER',
-        index: 'user'
-      },
-    ]
-  },
-
   formDescription: {
     header: 'Comment form',
     modelName: 'comment',
+    returnAddress: 'admin.comments',
     elementId: '',
     saveButtonLabel: 'Save Comment',
     cancelButtonLabel: 'Cancel',
@@ -72,5 +45,5 @@ export default Ember.Controller.extend({
     ],
   },
 
-  TestValidations,
+  CommentValidations,
 });

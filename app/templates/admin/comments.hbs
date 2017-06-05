@@ -1,9 +1,1 @@
-<div>
-    {{admin-table model=model tableDescription=tableDescription formDescription=formDescription}}
-
-    {{native-form changeset=(changeset formDescription TestValidations)}}
-
-    {{#if responseMessage}}
-        <div class="alert alert-success">{{responseMessage}}</div>
-    {{/if}}
-</div>
+{{outlet}}
