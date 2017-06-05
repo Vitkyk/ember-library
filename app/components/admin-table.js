@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  store: Ember.inject.service(),
   itemsOnPageOptions: [
     {
       value: 5,
@@ -26,6 +27,26 @@ export default Ember.Component.extend({
       for (let i = 0; i < itemsOnPageOptions.length; i++ ) {
         Ember.set(itemsOnPageOptions[i], 'disabled', value === itemsOnPageOptions[i].value);
       }
-    }
+    },
+
+    editItem(item) {
+      console.log('edit');
+      const form = this.get('formDescription');
+
+      for (let i = 0; i < form.descriptions.length; i++) {
+        const key = form.descriptions[i].index;
+        console.log(key, item.get(key));
+        Ember.set(form, key, item.get(key));
+      }
+      //changeset.set('elementId', item.get('id'));
+      //changeset.save();
+
+    },
+
+   deleteItem(item) {
+     item.destroyRecord().then(() => {
+       this.set('responseMessage', 'Success deletion');
+     });
+   },
  }
 });

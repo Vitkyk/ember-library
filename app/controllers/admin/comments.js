@@ -32,6 +32,7 @@ export default Ember.Controller.extend({
 
   formDescription: {
     header: 'Comment form',
+    modelName: 'comment',
     elementId: '',
     saveButtonLabel: 'Save Comment',
     cancelButtonLabel: 'Cancel',
@@ -60,7 +61,6 @@ export default Ember.Controller.extend({
         componentType: 'input',
         type: 'text',
         placeholder: 'Please type book',
-        foreignKey: true
       },
       {
         title: 'User',
@@ -68,7 +68,6 @@ export default Ember.Controller.extend({
         componentType: 'input',
         type: 'text',
         placeholder: 'Please type user',
-        foreignKey: true
       },
     ],
   },

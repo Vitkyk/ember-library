@@ -12,11 +12,15 @@
 
         <div class="form-group">
             <div class="col-sm-4 col-sm-offset-3">
-                <button class="btn btn-primary btn-lg btn-block" {{action submit changeset}} >{{changeset.saveButtonLabel}}</button>
+                <button class="btn btn-primary btn-lg btn-block" {{action 'save' changeset}} >{{changeset.saveButtonLabel}}</button>
             </div>
             <div class="col-sm-2">
-                <button class="btn btn-primary btn-lg btn-block" {{action rollback changeset}} >{{changeset.cancelButtonLabel}}</button>
+                <button class="btn btn-primary btn-lg btn-block" {{action 'cancel' changeset}} >{{changeset.cancelButtonLabel}}</button>
             </div>
         </div>
     </div>
 </div>
+
+{{#if responseMessage}}
+    <div class="alert alert-success">{{responseMessage}}</div>
+{{/if}}

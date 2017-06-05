@@ -18,6 +18,7 @@ Router.map(function() {
     this.route('books');
     this.route('settings');
     this.route('comments');
+    this.route('comment', { path: 'comment/:item_id' });
   });
   this.route('book');
   this.route('comment');

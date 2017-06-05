@@ -1,18 +1,26 @@
 <div>
-  <h2>{{formDescription.header}}</h2>
+    <h2>{{formDescription.header}}</h2>
 
- <div class="form-horizontal form-group form-group-lg row">
-   {{#each formDescription.elements as |element|}}
-    <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
-      {{input type=element.type value=element.value class="form-control" placeholder=element.placeholder }}
-    </div>
-   {{/each}}
+    <div class="form-horizontal">
+        {{#each formDescription.descriptions as |description|}}
+            {{validated-input
+            value=(get changeset description.index)
+            description=description
+            errorMessage=(get changeset.error description.index)
+            }}
+        {{/each}}
 
-    <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
-      <button class="btn btn-primary btn-lg btn-block" {{action saveItem}} >{{formDescription.saveButtonLabel}}</button>
+        <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-3">
+                <button class="btn btn-primary btn-lg btn-block" {{action 'save' changeset}} >{{formDescription.saveButtonLabel}}</button>
+            </div>
+            <div class="col-sm-2">
+                <button class="btn btn-primary btn-lg btn-block" {{action 'cancel' changeset}} >{{formDescription.cancelButtonLabel}}</button>
+            </div>
+        </div>
     </div>
-    <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-4 col-md-3">
-      <button class="btn btn-primary btn-lg btn-block" {{action cancel}} >{{formDescription.cancelButtonLabel}}</button>
-    </div>
- </div>
 </div>
+
+{{#if responseMessage}}
+    <div class="alert alert-success">{{responseMessage}}</div>
+{{/if}}

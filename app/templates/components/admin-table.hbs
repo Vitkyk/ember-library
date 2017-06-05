@@ -20,8 +20,8 @@
         {{/each}}
         <td>
           <span>
-            <button class="btn btn-primary" {{action editItem item}} >Edit</button>
-            <button class="btn btn-primary" {{action deleteItem item}} >Delete</button>
+            <button class="btn btn-primary" {{action 'editItem' item}} >Edit</button>
+            <button class="btn btn-primary" {{action 'deleteItem' item}} >Delete</button>
           </span>
         </td>
       </tr>
@@ -40,3 +40,7 @@
         {{/each}}
     </div>
 </div>
+
+{{#if responseMessage}}
+    <div class="alert alert-success">{{responseMessage}}</div>
+{{/if}}

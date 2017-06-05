@@ -1,17 +1,7 @@
 <div>
-    {{admin-table
-        model=model
-        tableDescription=tableDescription
-        editItem=(action 'editComment')
-        deleteItem=(action 'deleteComment')
-    }}
+    {{admin-table model=model tableDescription=tableDescription formDescription=formDescription}}
 
-    {{native-form
-        changeset=(changeset formDescription TestValidations)
-        submit=(action "submit")
-        rollback=(action "rollback")
-    }}
-
+    {{native-form changeset=(changeset formDescription TestValidations)}}
 
     {{#if responseMessage}}
         <div class="alert alert-success">{{responseMessage}}</div>

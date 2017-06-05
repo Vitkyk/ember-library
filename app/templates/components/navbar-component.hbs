@@ -32,10 +32,10 @@
     <ul class="nav navbar-nav navbar-right">
       <li>
         {{#if session.isAuthenticated}}
-          <button {{action 'invalidateSession'}} class="btn-link">Logout</button>
+          <a {{action 'invalidateSession'}} class="btn-link">Logout</a>
         {{else}}
           {{#link-to 'login'}}
-            <button {{action 'invalidateSession'}} class="btn-link">Login</button>
+            <a {{action 'invalidateSession'}} class="btn-link">Login</a>
           {{/link-to}}
         {{/if}}
       </li>
