@@ -20,7 +20,6 @@ Router.map(function() {
     this.route('comments', function() {
       this.route('form', { path: 'form/:item_id' });
     });
-    this.route('comment', { path: 'comment/:item_id' });
   });
   this.route('book');
   this.route('comment');
