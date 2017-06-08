@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-    {{#each model as |item|}}
+    {{#each listItemsOnPage as |item|}}
       <tr>
         {{#each tableDescription.columns as |column|}}
           <td>{{get item column.index}}</td>
@@ -31,7 +31,16 @@
     {{/each}}
     </tbody>
   </table>
-    <div> Pages: {{numberOfPages}}</div>
+    <div>
+        Pages:
+        {{#each listOfPages as |page|}}
+            {{#if page.current}}
+                <strong>{{page.value}}</strong>
+            {{else}}
+                <button {{action 'selectNumberOfPage' page.value}}>{{page.value}}</button>
+            {{/if}}
+        {{/each}}
+    </div>
     <div>
         Items on page:
         {{#each itemsOnPageOptions as |count|}}

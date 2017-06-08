@@ -1,0 +1,10 @@
+<div class="row">
+    {{#each items as |item|}}
+        <div class="col-sm-2">
+            {{#each description as |position|}}
+                <div>{{position.label}}{{get item position.key}}</div>
+            {{/each}}
+        </div>
+    {{/each}}
+    <div class="col-sm-2">more</div>
+</div>

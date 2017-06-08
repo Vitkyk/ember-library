@@ -17,16 +17,58 @@ export default Ember.Component.extend({
     },
   ],
   itemsOnPage: 5,
+  numberOfPage: 1,
+  listOfPages: Ember.computed('model.[]', 'numberOfPages', 'numberOfPage', function() {
+    const pages = [];
+    for (let i = 0; i < this.get('numberOfPages'); i++) {
+      pages[i] = {value: i + 1};
+      if (pages[i].value === this.get('numberOfPage')) pages[i].current = true;
+    }
+    return pages;
+  }),
   numberOfPages: Ember.computed('model.[]', 'itemsOnPage', function() {
-    return Math.floor(this.get('model').get('content').length / this.get('itemsOnPage'));
+    return Math.floor((this.get('model').get('content').length - 1) / this.get('itemsOnPage')) + 1;
+  }),
+  listItemsOnPage: Ember.computed('model.[]', 'itemsOnPage', 'numberOfPage', function() {
+    /*
+    //interesting behaviour
+    var temp = this.get('model');
+    temp.set('content', temp.get('content').slice(0, this.get('itemsOnPage')));
+    return temp;
+    */
+    const itemsOnPage = this.get('itemsOnPage');
+    const numberOfPage = this.get('numberOfPage');
+    const numberOfPages = this.get('numberOfPages');
+    const content = this.get('model').get('content')
+      .slice(
+        (numberOfPage - 1) * itemsOnPage,
+        numberOfPages === numberOfPage ? this.get('model').get('content').length : numberOfPage * itemsOnPage
+      );
+    const temp = [];
+
+    for (let i = 0; i < content.length; i++) {
+      temp[i] = this.get('store').peekRecord('comment', content[i].id);
+    }
+    return temp;
+
+    //console.log(this.get('model'));
+    //return this.get('model').get('content').slice(0, this.get('itemsOnPage'));
   }),
  actions:{
     selectNumberOfItemsOnPage(value) {
+      const itemsOnPage = this.get('itemsOnPage');
       this.set('itemsOnPage', value);
       const itemsOnPageOptions = this.get('itemsOnPageOptions');
       for (let i = 0; i < itemsOnPageOptions.length; i++ ) {
         Ember.set(itemsOnPageOptions[i], 'disabled', value === itemsOnPageOptions[i].value);
       }
+
+      const numberOfPage = this.get('numberOfPage');
+      this.set('numberOfPage', Math.floor((itemsOnPage * (numberOfPage - 1))/ value) + 1);
+    },
+
+    selectNumberOfPage(value) {
+      this.set('numberOfPage', value);
     },
 
     editItem(item) {
