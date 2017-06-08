@@ -34,20 +34,20 @@
     <div>
         Pages:
         {{#each listOfPages as |page|}}
-            {{#if page.current}}
-                <strong>{{page.value}}</strong>
+            {{#if (es-equal page numberOfPage)}}
+                <strong>{{page}}</strong>
             {{else}}
-                <button {{action 'selectNumberOfPage' page.value}}>{{page.value}}</button>
+                <button {{action 'selectNumberOfPage' page}}>{{page}}</button>
             {{/if}}
         {{/each}}
     </div>
     <div>
         Items on page:
         {{#each itemsOnPageOptions as |count|}}
-            {{#if count.disabled}}
-                <strong>{{count.value}}</strong>
+            {{#if (es-equal count itemsOnPage)}}
+                <strong>{{count}}</strong>
             {{else}}
-                <button {{action 'selectNumberOfItemsOnPage' count.value}}>{{count.value}}</button>
+                <button {{action 'selectNumberOfItemsOnPage' count}}>{{count}}</button>
             {{/if}}
         {{/each}}
     </div>

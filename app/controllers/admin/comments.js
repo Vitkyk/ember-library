@@ -1,7 +1,5 @@
 import Ember from 'ember';
 import TestValidations from '../../validations/test';
-import { saveItem, cancelEditions } from '../../utils/basic-actions2';
-import { fillFormToEdit, deleteItem } from '../../utils/basic-actions';
 
 export default Ember.Controller.extend({
   tableDescription: {

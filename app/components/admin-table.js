@@ -2,27 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   store: Ember.inject.service(),
-  itemsOnPageOptions: [
-    {
-      value: 5,
-      disabled: true,
-    },
-    {
-      value: 10,
-      disabled: false,
-    },
-    {
-      value: 20,
-      disabled: false,
-    },
-  ],
+  itemsOnPageOptions: [ 5, 10, 20],
   itemsOnPage: 5,
   numberOfPage: 1,
   listOfPages: Ember.computed('model.[]', 'numberOfPages', 'numberOfPage', function() {
     const pages = [];
     for (let i = 0; i < this.get('numberOfPages'); i++) {
-      pages[i] = {value: i + 1};
-      if (pages[i].value === this.get('numberOfPage')) pages[i].current = true;
+      pages[i] = i + 1;
     }
     return pages;
   }),
@@ -58,10 +44,6 @@ export default Ember.Component.extend({
     selectNumberOfItemsOnPage(value) {
       const itemsOnPage = this.get('itemsOnPage');
       this.set('itemsOnPage', value);
-      const itemsOnPageOptions = this.get('itemsOnPageOptions');
-      for (let i = 0; i < itemsOnPageOptions.length; i++ ) {
-        Ember.set(itemsOnPageOptions[i], 'disabled', value === itemsOnPageOptions[i].value);
-      }
 
       const numberOfPage = this.get('numberOfPage');
       this.set('numberOfPage', Math.floor((itemsOnPage * (numberOfPage - 1))/ value) + 1);
@@ -72,12 +54,12 @@ export default Ember.Component.extend({
     },
 
     editItem(item) {
-      console.log('edit');
+      //console.log('edit');
       const form = this.get('formDescription');
 
       for (let i = 0; i < form.descriptions.length; i++) {
         const key = form.descriptions[i].index;
-        console.log(key, item.get(key));
+        //console.log(key, item.get(key));
         Ember.set(form, key, item.get(key));
       }
       //changeset.set('elementId', item.get('id'));
