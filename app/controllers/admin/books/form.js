@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import BookValidations from '../../../validations/book';
+import validations from '../../../validations/book';
 import { createFormDescriptionElement } from '../../../utils/form-descriptions';
 
 export default Ember.Controller.extend({
@@ -21,5 +21,5 @@ export default Ember.Controller.extend({
     ],
   },
 
-  BookValidations,
+  validations,
 });

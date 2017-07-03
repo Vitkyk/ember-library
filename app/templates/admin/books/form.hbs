@@ -1,7 +1,7 @@
-<h2>Book: {{model.id}}</h2>
+<h2>ID: {{model.id}}</h2>
 
-{{#link-to 'admin.books' class="btn-link"}}
+{{#link-to formDescription.returnAddress class="btn-link"}}
     <strong> All </strong>
 {{/link-to}}
 
-{{input-form formDescription=formDescription changeset=(changeset model CommentValidations)}}{{outlet}}
+{{input-form formDescription=formDescription changeset=(changeset model validations)}}{{outlet}}

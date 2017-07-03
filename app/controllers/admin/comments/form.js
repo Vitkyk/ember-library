@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import CommentValidations from '../../../validations/comment';
+import validations from '../../../validations/comment';
 import { createFormDescriptionElement } from '../../../utils/form-descriptions';
 
 export default Ember.Controller.extend({
@@ -23,5 +23,5 @@ export default Ember.Controller.extend({
     ],
   },
 
-  CommentValidations,
+  validations,
 });

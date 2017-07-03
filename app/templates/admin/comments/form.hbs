@@ -1,7 +1,7 @@
-<h2>Comment: {{model.id}}</h2>
+<h2>ID: {{model.id}}</h2>
 
-{{#link-to 'admin.comments' class="btn-link"}}
+{{#link-to formDescription.returnAddress class="btn-link"}}
     <strong> All </strong>
 {{/link-to}}
 
-{{input-form formDescription=formDescription changeset=(changeset model CommentValidations)}}
+{{input-form formDescription=formDescription changeset=(changeset model validations)}}
