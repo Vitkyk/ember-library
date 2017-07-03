@@ -1,0 +1,7 @@
+<h2>Book: {{model.id}}</h2>
+
+{{#link-to 'admin.books' class="btn-link"}}
+    <strong> All </strong>
+{{/link-to}}
+
+{{input-form formDescription=formDescription changeset=(changeset model CommentValidations)}}{{outlet}}

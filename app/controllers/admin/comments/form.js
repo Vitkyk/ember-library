@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import CommentValidations from '../../../validations/comment';
+import { createFormDescriptionElement } from '../../../utils/form-descriptions';
 
 export default Ember.Controller.extend({
   formDescription: {
@@ -15,33 +16,10 @@ export default Ember.Controller.extend({
     book: '',
     user: '',
     descriptions: [
-      {
-        title: 'Text',
-        index: 'text',
-        componentType: 'input',
-        type: 'text',
-        placeholder: 'Please type text',
-      },
-      {
-        title: 'Date',
-        index: 'date',
-        componentType: 'datetime-local',
-        type: 'datetime-local',
-      },
-      {
-        title: 'Book',
-        index: 'book',
-        componentType: 'input',
-        type: 'text',
-        placeholder: 'Please type book',
-      },
-      {
-        title: 'User',
-        index: 'user',
-        componentType: 'input',
-        type: 'text',
-        placeholder: 'Please type user',
-      },
+      createFormDescriptionElement('Text', 'text', 'input', 'text', 'Please type text'),
+      createFormDescriptionElement('Date', 'date', 'datetime-local', 'datetime-local'),
+      createFormDescriptionElement('Book', 'book', 'input', 'text', 'Please type book'),
+      createFormDescriptionElement('User', 'user', 'input', 'text', 'Please type user'),
     ],
   },
 

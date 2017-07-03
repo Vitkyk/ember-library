@@ -31,9 +31,10 @@ export default Ember.Component.extend({
         numberOfPages === numberOfPage ? this.get('model').get('content').length : numberOfPage * itemsOnPage
       );
     const temp = [];
+    const modelName = this.get('tableDescription').modelName;
 
     for (let i = 0; i < content.length; i++) {
-      temp[i] = this.get('store').peekRecord('comment', content[i].id);
+      temp[i] = this.get('store').peekRecord(modelName, content[i].id);
     }
     return temp;
 
